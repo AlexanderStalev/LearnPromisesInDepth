@@ -7,9 +7,9 @@
     <script>
         angular.module('app', [])
                 .run(function($q){
-                    $q.reject(1)
-                            .finally(function(a){
-return 2;
+                    $q.resolve(1)
+                            .then(function(a){
+throw 2;
 // return $q.reject(3);
                             })
                             .catch(function(a){
