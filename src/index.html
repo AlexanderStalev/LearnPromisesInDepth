@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+        angular.module('app', [])
+                .run(function($q){
+                    $q.reject(1)
+                            .finally(function(a){
+return 2;
+// return $q.reject(3);
+                            })
+                            .catch(function(a){
+                                console.log(a);
+                            })
+                });
+    </script>
+</head>
+<body ng-app="app">
+
+</body>
+</html>
