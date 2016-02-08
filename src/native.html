@@ -4,13 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../node_modules/angular/angular.js"></script>
+
     <script>
-        angular.module('app', [])
-                .run(function($q, $rootScope){
-                    later();     
-                     
-                    $q.resolve(1)
+                    function later(){
+                      setTimeout(function(){
+                          console.log('next tick');
+                      },0);  
+                    }
+                    
+                    later();
+                    
+                    requestAnimationFrame(function(){
+                        console.log('next requestAnimationFrame tick'); 
+                    });
+                    
+                    Promise.resolve(1)
                             .then(function(a){
                                 console.log('then');
                                 later();
@@ -19,25 +27,19 @@
                             .catch(function(a){
                                 console.log('catch');
                                 later();
-                                return 3;
                             })
                             .then(function(a){
                                 console.log('then 2');
                                 later();
-                                return 4;
                             });
-                            //$rootScope.$apply();
-                     console.log('after');         
-                    later();      
                             
-                    function later(){
-                      setTimeout(function(){
-                          console.log('next tick');
-                      },0);  
-                    }        
-                     
+                    console.log('after');         
                             
-                });
+                             requestAnimationFrame(function(){
+                        console.log('next requestAnimationFrame tick'); 
+                    });
+                            
+                    later();
     </script>
 </head>
 
