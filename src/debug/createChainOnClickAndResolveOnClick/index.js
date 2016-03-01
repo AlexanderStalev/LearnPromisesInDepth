@@ -24,6 +24,6 @@ angular
         }
 
         $scope.resolve = function () {
-            deferred && deferred.resolve('a');
+           deferred.resolve('a');
         }
     });
