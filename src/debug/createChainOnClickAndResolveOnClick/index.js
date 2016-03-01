@@ -4,7 +4,8 @@ angular
         var deferred = $q.defer();
 
         $scope.create = function () {
-            deferred.promise
+            deferred
+                .promise
                 .then(function (params) {
                     return $q(function (resolve) {
                         setTimeout(function () {
@@ -17,6 +18,9 @@ angular
                 })
                 .then(function (params) {
                     throw new Error(params + 'd');
+                })
+                .then(function (params) {
+                    return params + 'SKIP';
                 })
                 .catch(function (error) {
                     console.log(error.message + 'e');
