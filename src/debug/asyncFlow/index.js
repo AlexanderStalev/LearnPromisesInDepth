@@ -26,6 +26,92 @@ angular
             console.log(5);
         }
         
+         $scope.foo2 = function () {
+
+            var fulfilledPromise = $q.resolve('result');
+
+            fulfilledPromise
+                .then(null)
+                .then(function (params) {
+                    console.log(2);
+                });
+
+            fulfilledPromise
+                .then(function (params) {
+                    console.log(3);
+                })
+                .then(function (params) {
+                    console.log(4);
+                })
+
+            console.log(5);
+        }
+        
+          $scope.foo3 = function () {
+
+            var fulfilledPromise = $q.resolve('result');
+
+            fulfilledPromise
+                .then(undefined)
+                .then(function (params) {
+                    console.log(2);
+                });
+
+            fulfilledPromise
+                .then(function (params) {
+                    console.log(3);
+                })
+                .then(function (params) {
+                    console.log(4);
+                })
+
+            console.log(5);
+        }
+        
+         $scope.foo4 = function () {
+
+            var fulfilledPromise = $q.resolve('result');
+
+            fulfilledPromise
+                .finally(function (params) {
+                    console.log(1);
+                })               
+
+            fulfilledPromise
+                .then(function (params) {
+                    console.log(2);
+                })
+                .then(function (params) {
+                    console.log(3);
+                })
+
+            console.log(4);
+        }
+        
+        $scope.foo5 = function () {
+
+            var fulfilledPromise = $q.resolve('result');
+
+            fulfilledPromise
+                .finally(function (params) {
+                    console.log(1);
+                })     
+                .then(function (params) {
+                    console.log(2);
+                })          
+
+            fulfilledPromise
+                .then(function (params) {
+                    console.log(3);
+                })
+                .then(function (params) {
+                    console.log(4);
+                })
+
+            console.log(5);
+        }
+        
+        
         $scope.fooNative = function () {
 
             var fulfilledPromise = Promise.resolve('result');
