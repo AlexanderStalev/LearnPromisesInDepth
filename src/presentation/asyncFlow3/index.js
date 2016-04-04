@@ -1,14 +1,14 @@
 angular
     .module('myApp', [])
     .controller('myController', function ($scope, $q) {
-        $q.resolve()
-            .then(function () {
-                throw 'error';
-                console.log(1);
-            });
+        var promise = $q.resolve();
+        console.log(promise.$$state.status === 1); // fulfilled.
+
+        var promise2 = promise.then(function() {});
+        console.log(promise2.$$state.status === 0); // pending.
 
         $scope.$evalAsync(function() {
-            console.log(2);
+            console.log(promise2.$$state.status === 1); // fulfilled.
         });
     });
 
